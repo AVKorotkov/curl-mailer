@@ -26,7 +26,7 @@ described below.
 
 cURL Mailer utilizes configuration files that might look like [this
 sample](sample.conf) (please look at my other Bash project, [Bash configuration
-files parser](https://github.com/AVKorotkov/bash-config-parser/tree/master)).
+files parser](https://github.com/AVKorotkov/bash-config-parser)).
 You need to create a script and a configuration file with the same name, but
 with the `conf` extension, for example, `sample.sh` and `sample.conf`, and put
 both files in the same directory. Source `curl-mailer.sh` in your
