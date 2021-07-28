@@ -1,4 +1,8 @@
 # cURL Mailer
 
-Bash script to send email messages using cURL.
+cURL Mailer is a Bash function to send email message using cURL.
+
+## Requirements
+
+cURL and any recent versions of GNU Bash, GNU sed, GNU Grep.
 
