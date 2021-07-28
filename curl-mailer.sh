@@ -3,6 +3,28 @@
 set -o nounset
 set -o errexit
 
+#===  FUNCTION  ==================
+#
+# Print description of the script
+#
+#=================================
+# TODO
+function description() {
+	# script name
+	local script_name=$(basename "$0")
+	cat<<-EODESC
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Check a directory for some types of files, send them by email
+		and move to another directory after that.
+		Usage: $script_name [options]
+		  options:
+		    -h, --help            print this help text and exit
+		    -v, --verbose         verbose output
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	EODESC
+}
+
 #===  FUNCTION  ===
 #
 # Set names
@@ -31,6 +53,38 @@ function err_exit() {
 	echo "$msg"
 	# exit with the given code
 	exit "$code"
+}
+
+#===  FUNCTION  =======
+#
+# Parse options
+#
+#======================
+function parse_opts() {
+	## check for number of options
+	case ${opts_count} in
+		0)
+			;;
+		1)
+			# if '-v' or '--verbose' is present then set verbose
+			if [ "${opts}" = "-v" ] || [ "${opts}" = "--verbose" ]; then
+				verbose=true
+			# if '-h' or '--help' is present then show help end exit
+			elif [ "${opts}" = "-h" ] || [ "${opts}" = "--help" ]; then
+				description
+				exit 0
+			# if unknown option then show help end exit
+			else
+				description
+				err_exit "Unknown option (${opts}). Aborted" 1
+			fi
+			;;
+    *)
+			# show help end exit if number of options > 1
+			description
+			err_exit "Too many options (${opts_count}). Aborted" 1
+			;;
+  esac
 }
 
 #===  FUNCTION  ======================
@@ -97,7 +151,7 @@ function parse_conf() {
 #
 #=======================
 function send_mail() {
-	echo
+	echo Send email message
 }
 
 #===  FUNCTION  ========
@@ -106,7 +160,33 @@ function send_mail() {
 #
 #=======================
 function process() {
+	# set verbose to false by default
+	verbose=false
+	# parse options
+	parse_opts
+	# set some names
 	set_names
+	# print "start"
+	# start
+	# parse configuration
 	parse_conf
+	# check config file values
+	# check_conf
+	# start to create log line
+	# logging
+	# print configuration
+	# show_info
+	# proceed to continue
+	# proceed
+	# set cURL options
+	# set_curl
+	# get cURL error codes
+	# get_curl_codes
+	#
 	send_mail
+	# print stop running
+	# stop
 }
+
+opts_count=$#
+opts="$*"

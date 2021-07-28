@@ -5,6 +5,6 @@ set -o errexit
 
 #===  MAIN  ===
 
-source curl-mailer.sh
+source curl-mailer.sh $*
 # process email message
 process
