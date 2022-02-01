@@ -13,6 +13,10 @@ insert_final_newline = true
 [*.json]
 insert_final_newline = false
 
+# Applies to all Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
 # Use 4 spaces for the Python files
 [*.py]
 indent_size = 4

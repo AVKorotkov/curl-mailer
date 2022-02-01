@@ -34,3 +34,8 @@ both files in the same directory. Source `curl-mailer.sh` in your
 
 Feel free to expand cURL Mailer to whatever you want if you find any limitations
 of your needs in this function.
+
+## TODO
+
+* Add the ability to send attachments.
+* Separate general options from email account and data options.
